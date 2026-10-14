@@ -1,0 +1,12 @@
+.git
+.env
+data
+android
+**/__pycache__
+**/*.pyc
+**/*.sqlite
+**/*.sqlite-wal
+**/*.sqlite-shm
+**/*.xlsx
+code-backup-*
+app.apk

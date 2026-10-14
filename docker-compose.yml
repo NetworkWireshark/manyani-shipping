@@ -1,0 +1,31 @@
+name: manyani-shipping
+
+services:
+  app:
+    build: .
+    image: manyani-shipping:local
+    container_name: manyani-shipping
+    ports:
+      - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      PORT: "8080"
+      PORT_STRICT: "1"
+      HOST: "0.0.0.0"
+      DB_PATH: /app/data/marine_ops.sqlite
+      BACKUP_LOCAL: /app/data/backups
+      # Test backups stay in a subfolder so they do not replace the live daily file.
+      # At cutover, after the Windows server on port 80 is stopped, set this to
+      # /share-backups and mount the live data folder instead of ./data/docker-test.
+      BACKUP_SHARE: /share-backups/docker-test
+      SITE: erica-bignoniaceous-tyson.ngrok-free.dev
+      LAN_IP: 192.168.100.100
+    volumes:
+      # Copied database for the test. Do not point this at the live file while
+      # the Windows server is still writing data\marine_ops.sqlite.
+      - ./data/docker-test:/app/data
+      - type: bind
+        source: 'E:\Partage\IT\MANYANI SHIPPING\backups'
+        target: /share-backups
+    restart: unless-stopped

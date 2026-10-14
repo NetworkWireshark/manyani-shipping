@@ -1,0 +1,8 @@
+Stop the existing Cloud Endpoint for this URL in ngrok Dashboard first.
+Start the updated application server using run-server-8080.bat, then run start-ngrok.bat.
+The tunnel must forward to the server port (8080).
+Public URL: https://erica-bignoniaceous-tyson.ngrok-free.dev
+Check /api/health returns {"ok": true} and /login displays MANYANI SHIPPING.
+A page titled "Your new ngrok Cloud Endpoint!" means the URL is not yet connected to this server.
+Keep the server and ngrok running to use the Android app on 4G.
+Do not configure marinodigita.com DNS for this free URL; the APK uses the ngrok URL directly.
